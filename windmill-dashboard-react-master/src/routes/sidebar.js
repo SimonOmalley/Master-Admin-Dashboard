@@ -9,23 +9,29 @@ const routes = [
   {
     path: '/app/dashboard', // the url
     icon: 'HomeIcon', // the component being exported from icons/index.js
-    name: 'Upload Data', // name that appear in Sidebar
+    name: 'Validate Data', // name that appear in Sidebar
+  },
+  {
+    path: '/app/charts',
+    icon: 'ChartsIcon',
+    name: 'Analytics',
   },
   {
     path: '/app/forms',
     icon: 'FormsIcon',
-    name: 'Validate Data',
+    name: 'Upload Data',
+  },
+  {
+    path: '/app/tables',
+    icon: 'TablesIcon',
+    name: 'Remove Data',
   },
   /*{
     path: '/app/cards',
     icon: 'CardsIcon',
     name: 'Cards',
   },*/
-  {
-    path: '/app/charts',
-    icon: 'ChartsIcon',
-    name: 'Analytics',
-  },
+  
   /*{
     path: '/app/buttons',
     icon: 'ButtonsIcon',
@@ -36,11 +42,7 @@ const routes = [
     icon: 'ModalsIcon',
     name: 'Modals',
   },*/
-  {
-    path: '/app/tables',
-    icon: 'TablesIcon',
-    name: 'Remove Data',
-  },
+  
   /*{
     icon: 'PagesIcon',
     name: 'Pages',

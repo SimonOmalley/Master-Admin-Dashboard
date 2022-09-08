@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import CTA from '../components/CTA'
 import InfoCard from '../components/Cards/InfoCard'
 import ChartCard from '../components/Chart/ChartCard'
 import { Doughnut, Line } from 'react-chartjs-2'
@@ -52,11 +51,11 @@ function Dashboard() {
     <>
       <PageTitle>Dashboard</PageTitle>
 
-      <CTA />
+      
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-        <InfoCard title="Total clients" value="6389">
+        <InfoCard title="Total Entries" value="6389">
           <RoundIcon
             icon={PeopleIcon}
             iconColorClass="text-orange-500 dark:text-orange-100"
@@ -64,17 +63,8 @@ function Dashboard() {
             className="mr-4"
           />
         </InfoCard>
-
-        <InfoCard title="Account balance" value="$ 46,760.89">
-          <RoundIcon
-            icon={MoneyIcon}
-            iconColorClass="text-green-500 dark:text-green-100"
-            bgColorClass="bg-green-100 dark:bg-green-500"
-            className="mr-4"
-          />
-        </InfoCard>
-
-        <InfoCard title="New sales" value="376">
+        
+        <InfoCard title="New Entries" value="376">
           <RoundIcon
             icon={CartIcon}
             iconColorClass="text-blue-500 dark:text-blue-100"
@@ -83,7 +73,18 @@ function Dashboard() {
           />
         </InfoCard>
 
-        <InfoCard title="Pending contacts" value="35">
+        <InfoCard title="Money Simon needs for this Project" value="$ 46,760.89">
+          <RoundIcon
+            icon={MoneyIcon}
+            iconColorClass="text-green-500 dark:text-green-100"
+            bgColorClass="bg-green-100 dark:bg-green-500"
+            className="mr-4"
+          />
+        </InfoCard>
+
+        
+
+        <InfoCard title="Weeks until Uni ends forever" value="5">
           <RoundIcon
             icon={ChatIcon}
             iconColorClass="text-teal-500 dark:text-teal-100"
@@ -97,10 +98,12 @@ function Dashboard() {
         <Table>
           <TableHeader>
             <tr>
-              <TableCell>Client</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Date</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Unidentified Photo</TableCell>
+              <TableCell>User's Description</TableCell>
+              <TableCell>Device ID</TableCell>
+              <TableCell>Time Recorded</TableCell>
+              <TableCell>Approve/Deny</TableCell>
             </tr>
           </TableHeader>
           <TableBody>
