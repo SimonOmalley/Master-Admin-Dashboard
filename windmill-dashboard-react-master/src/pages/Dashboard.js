@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import axios from "axios"
 import InfoCard from '../components/Cards/InfoCard'
 import ChartCard from '../components/Chart/ChartCard'
 import { Doughnut, Line } from 'react-chartjs-2'
@@ -8,6 +8,8 @@ import PageTitle from '../components/Typography/PageTitle'
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons'
 import RoundIcon from '../components/RoundIcon'
 import response from '../utils/demo/tableData'
+import responses from '../apiconn/fetchdata.js'
+
 import {
   TableBody,
   TableContainer,
@@ -28,10 +30,11 @@ import {
   lineLegends,
 } from '../utils/demo/chartsData'
 
-function Dashboard() {
+function Dashboard() {  
   const [page, setPage] = useState(1)
-  const [data, setData] = useState([])
-
+  const [data, setData] = useState([])  
+  
+  
   // pagination setup
   const resultsPerPage = 10
   const totalResults = response.length
@@ -40,14 +43,17 @@ function Dashboard() {
   function onPageChange(p) {
     setPage(p)
   }
+  
 
   // on page change, load new sliced data
   // here you would make another server request for new data
-  useEffect(() => {
+  useEffect(() => {    
     setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage))
   }, [page])
 
   return (
+
+    
     <>
       <PageTitle>Dashboard</PageTitle>
 
@@ -106,29 +112,29 @@ function Dashboard() {
               <TableCell>Approve/Deny</TableCell>
             </tr>
           </TableHeader>
-          <TableBody>
-            {data.map((user, i) => (
-              <TableRow key={i}>
-                <TableCell>
-                  <div className="flex items-center text-sm">
-                    <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User image" />
+          <TableBody>            
+              <TableRow >
+                <TableCell>                  
                     <div>
-                      <p className="font-semibold">{user.name}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p>
-                    </div>
-                  </div>
+                      <p className="font-semibold"></p>                      
+                    </div>                  
                 </TableCell>
                 <TableCell>
-                  <span className="text-sm">$ {user.amount}</span>
+                  <span className="text-sm"></span>
                 </TableCell>
                 <TableCell>
-                  <Badge type={user.status}>{user.status}</Badge>
+                  
                 </TableCell>
                 <TableCell>
-                  <span className="text-sm">{new Date(user.date).toLocaleDateString()}</span>
+                  <span className="text-sm"></span>
                 </TableCell>
-              </TableRow>
-            ))}
+                <TableCell>
+                  <span className="text-sm"></span>
+                </TableCell>
+                <TableCell>
+                  <span className="text-sm"></span>
+                </TableCell>
+              </TableRow>            
           </TableBody>
         </Table>
         <TableFooter>
