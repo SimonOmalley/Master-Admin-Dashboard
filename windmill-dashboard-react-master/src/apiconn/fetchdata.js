@@ -1,91 +1,34 @@
-import axios from "axios"
-import React, { useEffect, useState } from "react"
-import { render } from "react-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-class Photo extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    };
-  }
+const apiUrl = "https://admin.smartwaste.app/api/Controller/API/BarcodeAPI/read.php";
 
-  componentDidMount() {
-    fetch("https://admin.smartwaste.app/api/Controller/API/BarcodeAPI/single_read.php?id=18")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          });
-        },        
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }        
-      )
-  }
+function App() {
+  const [Photo, setUserData] = useState({});
 
-  render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-             <Table>
-             <TableHeader>
-               <tr>
-                 <TableCell>ID</TableCell>
-                 <TableCell>Unidentified Photo</TableCell>
-                 <TableCell>User's Description</TableCell>
-                 <TableCell>Device ID</TableCell>
-                 <TableCell>Time Recorded</TableCell>
-                 <TableCell>Approve/Deny</TableCell>
-               </tr>
-             </TableHeader>
-             <TableBody>            
-                 <TableRow key={item.id}>
-                   <TableCell>                  
-                       <div>
-                         <p className="font-semibold">{item.photoUnidentified}</p>                      
-                       </div>                  
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                 </TableRow>            
-             </TableBody>
-           </Table>
-          ))}
-        </ul>
-      );
-    }
-  }
+  useEffect(() => {
+    getApiWithAxios();
+  }, []);
+
+  const getApiWithAxios = async () => {
+    const response = await axios.get(apiUrl);
+    setUserData(response.data);
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h2>Unidentified Photos</h2>
+      </header>
+      <div className="user-container">
+        <h5 className="info-item">{Photo.id}</h5>
+        <h5 className="info-item">{Photo.photoUnidentified}</h5>
+        <h5 className="info-item">{Photo.userIdentified}</h5>
+        <h5 className="info-item">{Photo.device}</h5>
+        <h5 className="info-item">{Photo.timeTaken}</h5>
+      </div>
+    </div>    
+  );
 }
 
-
-
-
-
+export default App;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from "axios"
 import InfoCard from '../components/Cards/InfoCard'
 import ChartCard from '../components/Chart/ChartCard'
 import { Doughnut, Line } from 'react-chartjs-2'
@@ -8,7 +7,7 @@ import PageTitle from '../components/Typography/PageTitle'
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons'
 import RoundIcon from '../components/RoundIcon'
 import response from '../utils/demo/tableData'
-import responses from '../apiconn/fetchdata.js'
+import App from '../apiconn/fetchdata.js'
 
 import {
   TableBody,
@@ -30,6 +29,9 @@ import {
   lineLegends,
 } from '../utils/demo/chartsData'
 
+
+
+
 function Dashboard() {  
   const [page, setPage] = useState(1)
   const [data, setData] = useState([])  
@@ -49,11 +51,9 @@ function Dashboard() {
   // here you would make another server request for new data
   useEffect(() => {    
     setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage))
-  }, [page])
+  }, [page])  
 
-  return (
-
-    
+  return (  
     <>
       <PageTitle>Dashboard</PageTitle>
 
@@ -97,46 +97,47 @@ function Dashboard() {
             bgColorClass="bg-teal-100 dark:bg-teal-500"
             className="mr-4"
           />
+          
         </InfoCard>
       </div>
 
       <TableContainer>
-        <Table>
-          <TableHeader>
-            <tr>
-              <TableCell>ID</TableCell>
-              <TableCell>Unidentified Photo</TableCell>
-              <TableCell>User's Description</TableCell>
-              <TableCell>Device ID</TableCell>
-              <TableCell>Time Recorded</TableCell>
-              <TableCell>Approve/Deny</TableCell>
-            </tr>
-          </TableHeader>
-          <TableBody>            
-              <TableRow >
-                <TableCell>                  
-                    <div>
-                      <p className="font-semibold"></p>                      
-                    </div>                  
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm"></span>
-                </TableCell>
-                <TableCell>
-                  
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm"></span>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm"></span>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm"></span>
-                </TableCell>
-              </TableRow>            
-          </TableBody>
-        </Table>
+      <Table>
+             <TableHeader>
+               <tr>
+                 <TableCell>ID</TableCell>
+                 <TableCell>Unidentified Photo</TableCell>
+                 <TableCell>User's Description</TableCell>
+                 <TableCell>Device ID</TableCell>
+                 <TableCell>Time Recorded</TableCell>
+                 <TableCell>Approve/Deny</TableCell>
+               </tr>
+             </TableHeader>
+             <TableBody>            
+                 <TableRow>
+                   <TableCell>                  
+                       <div>
+                         <p className="font-semibold"></p>                      
+                       </div>                  
+                   </TableCell>
+                   <TableCell>
+                     <span className="text-sm"></span>
+                   </TableCell>
+                   <TableCell>
+                     
+                   </TableCell>
+                   <TableCell>
+                     <span className="text-sm"></span>
+                   </TableCell>
+                   <TableCell>
+                     <span className="text-sm"></span>
+                   </TableCell>
+                   <TableCell>
+                     <span className="text-sm"></span>
+                   </TableCell>
+                 </TableRow>            
+             </TableBody>
+           </Table>
         <TableFooter>
           <Pagination
             totalResults={totalResults}
@@ -159,8 +160,11 @@ function Dashboard() {
           <ChartLegend legends={lineLegends} />
         </ChartCard>
       </div>
+      <div>
+      <App />
+    </div>
     </>
-  )
+  )  
 }
 
 export default Dashboard

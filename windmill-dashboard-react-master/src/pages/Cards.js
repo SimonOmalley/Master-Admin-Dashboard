@@ -11,9 +11,7 @@ import RoundIcon from '../components/RoundIcon'
 function Cards() {
   return (
     <>
-      <PageTitle>Cards</PageTitle>
-
-      <CTA />
+      <PageTitle>Cards</PageTitle>      
 
       <SectionTitle>Big section cards</SectionTitle>
 
