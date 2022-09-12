@@ -14,7 +14,7 @@ import {
   Pagination,
 } from '@windmill/react-ui'
 
-const apiUrl = "https://admin.smartwaste.app/api/Controller/API/BarcodeAPI/read.php";
+const apiUrl = "https://admin.smartwaste.app/api/Controller/API/BarcodeAPI/single_read.php?id=18";
 
 function App() {
   const [Photo, setUserData] = useState({});
@@ -44,23 +44,23 @@ function App() {
                  <TableRow>
                    <TableCell>                  
                        <div>
-                         <p className="font-semibold"></p>                      
+                         <p className="font-semibold">{Photo.id}</p>                      
                        </div>                  
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm"></span>
+                     <span className="text-sm">{Photo.photoUnidentified}</span>
                    </TableCell>
                    <TableCell>
                      
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm"></span>
+                     <span className="text-sm">{Photo.userIdentified}</span>
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm"></span>
+                     <span className="text-sm">{Photo.device}</span>
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm"></span>
+                     <span className="text-sm">{Photo.timeTaken}</span>
                    </TableCell>
                  </TableRow>            
              </TableBody>
