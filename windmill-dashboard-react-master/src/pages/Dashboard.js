@@ -102,42 +102,7 @@ function Dashboard() {
       </div>
 
       <TableContainer>
-      <Table>
-             <TableHeader>
-               <tr>
-                 <TableCell>ID</TableCell>
-                 <TableCell>Unidentified Photo</TableCell>
-                 <TableCell>User's Description</TableCell>
-                 <TableCell>Device ID</TableCell>
-                 <TableCell>Time Recorded</TableCell>
-                 <TableCell>Approve/Deny</TableCell>
-               </tr>
-             </TableHeader>
-             <TableBody>            
-                 <TableRow>
-                   <TableCell>                  
-                       <div>
-                         <p className="font-semibold"></p>                      
-                       </div>                  
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm"></span>
-                   </TableCell>
-                 </TableRow>            
-             </TableBody>
-           </Table>
+        <App />
         <TableFooter>
           <Pagination
             totalResults={totalResults}
@@ -159,10 +124,7 @@ function Dashboard() {
           <Line {...lineOptions} />
           <ChartLegend legends={lineLegends} />
         </ChartCard>
-      </div>
-      <div>
-      <App />
-    </div>
+      </div>      
     </>
   )  
 }
