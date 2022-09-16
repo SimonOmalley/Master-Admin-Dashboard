@@ -2,22 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import {
-  TableBody,
-  TableContainer,
+  TableBody,  
   Table,
   TableHeader,
   TableCell,
   TableRow,
-  TableFooter,
-  Avatar,
-  Badge,
   Pagination,
+  TableFooter,
 } from '@windmill/react-ui'
 
-const apiUrl = "https://admin.smartwaste.app/api/Controller/API/BarcodeAPI/single_read.php?id=18";
+const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/read.php";
 
 function App() {
+
+  const [PhotoPage, setPage] = useState(1)
+
   const [Photo, setUserData] = useState({});
+
+  const resultsPerPage = 10
+  
+  function onPageChangeTable1(p) {
+    setPage(p)
+  }  
 
   useEffect(() => {
     getApiWithAxios();
@@ -25,8 +31,16 @@ function App() {
 
   const getApiWithAxios = async () => {
     const response = await axios.get(apiUrl);
-    setUserData(response.data);
+    setUserData(response.data);   
   };
+
+  const totalResults = Photo.length
+
+  useEffect(() => {
+      setPage([Photo].slice((PhotoPage - 1) * resultsPerPage, PhotoPage * resultsPerPage))
+    }, [PhotoPage])
+
+  console.log(Photo);
 
   return (
     <Table>
@@ -40,31 +54,42 @@ function App() {
                  <TableCell>Approve/Deny</TableCell>
                </tr>
              </TableHeader>
-             <TableBody>            
-                 <TableRow>
+             <TableBody> 
+              {[Photo].map((photo, i) => (           
+                 <TableRow key = {i}>
                    <TableCell>                  
                        <div>
-                         <p className="font-semibold">{Photo.id}</p>                      
+                         <p className="font-semibold">{photo.id}</p>                      
                        </div>                  
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm">{Photo.photoUnidentified}</span>
+                     <span className="text-sm">{photo.photoUnidentified}</span>
                    </TableCell>
                    <TableCell>
                      
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm">{Photo.userIdentified}</span>
+                     <span className="text-sm">{photo.userIdentified}</span>
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm">{Photo.device}</span>
+                     <span className="text-sm">{photo.device}</span>
                    </TableCell>
                    <TableCell>
-                     <span className="text-sm">{Photo.timeTaken}</span>
+                     <span className="text-sm">{photo.timeTaken}</span>
                    </TableCell>
-                 </TableRow>            
+                 </TableRow>  
+                 ))}          
              </TableBody>
-           </Table>   
+             <TableFooter>
+          <Pagination
+            totalResults={totalResults}
+            resultsPerPage={resultsPerPage}
+            onChange={onPageChangeTable1}
+            label="Table navigation"
+          />
+        </TableFooter>
+           </Table>
+              
   );
 }
 

@@ -10,15 +10,8 @@ import response from '../utils/demo/tableData'
 import App from '../apiconn/fetchdata.js'
 
 import {
-  TableBody,
   TableContainer,
-  Table,
-  TableHeader,
-  TableCell,
-  TableRow,
-  TableFooter,
-  Avatar,
-  Badge,
+  TableFooter, 
   Pagination,
 } from '@windmill/react-ui'
 
