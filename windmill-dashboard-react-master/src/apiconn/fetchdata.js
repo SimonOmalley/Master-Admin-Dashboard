@@ -11,34 +11,38 @@ import {
   TableFooter,
 } from '@windmill/react-ui'
 
-const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/read.php";
+const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/single_read.php/?id=12";
 
 function App() {
 
-  const [PhotoPage, setPage] = useState(1)
+  //const [PhotoPage, setPage] = useState(1)
 
   const [Photo, setUserData] = useState({});
 
-  const resultsPerPage = 10
-  
-  function onPageChangeTable1(p) {
+  //const [PhotoJSON, setUserData2] = useState({});  
+
+  const resultsPerPage = 4
+  //const totalResults = Photo.length
+
+  /*function onPageChangeTable1(p) {
     setPage(p)
-  }  
+  } */ 
 
   useEffect(() => {
-    getApiWithAxios();
+    getApiWithAxios();    
   }, []);
 
   const getApiWithAxios = async () => {
     const response = await axios.get(apiUrl);
-    setUserData(response.data);   
+    setUserData(response.data); 
+    //setUserData2(response.data);      
   };
 
-  const totalResults = Photo.length
+  /*useEffect(() => {    
+      setPage(Photo.slice((PhotoPage - 1) * resultsPerPage, PhotoPage * resultsPerPage))
+    }, [PhotoPage])*/
 
-  useEffect(() => {
-      setPage([Photo].slice((PhotoPage - 1) * resultsPerPage, PhotoPage * resultsPerPage))
-    }, [PhotoPage])
+  
 
   console.log(Photo);
 
@@ -66,10 +70,7 @@ function App() {
                      <span className="text-sm">{photo.photoUnidentified}</span>
                    </TableCell>
                    <TableCell>
-                     
-                   </TableCell>
-                   <TableCell>
-                     <span className="text-sm">{photo.userIdentified}</span>
+                     <span className="text-sm">{photo.userIdentification}</span>
                    </TableCell>
                    <TableCell>
                      <span className="text-sm">{photo.device}</span>
@@ -77,16 +78,13 @@ function App() {
                    <TableCell>
                      <span className="text-sm">{photo.timeTaken}</span>
                    </TableCell>
+                   <TableCell>
+                     
+                   </TableCell>
                  </TableRow>  
                  ))}          
              </TableBody>
-             <TableFooter>
-          <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            onChange={onPageChangeTable1}
-            label="Table navigation"
-          />
+             <TableFooter>            
         </TableFooter>
            </Table>
               

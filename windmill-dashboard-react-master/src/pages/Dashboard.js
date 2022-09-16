@@ -95,15 +95,7 @@ function Dashboard() {
       </div>
 
       <TableContainer>
-        <App />
-        <TableFooter>
-          <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            label="Table navigation"
-            onChange={onPageChange}
-          />
-        </TableFooter>
+        <App />        
       </TableContainer>
 
       <PageTitle>Charts</PageTitle>
