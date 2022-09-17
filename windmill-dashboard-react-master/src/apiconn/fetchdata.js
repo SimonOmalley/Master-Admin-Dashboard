@@ -11,15 +11,15 @@ import {
   TableFooter,
 } from '@windmill/react-ui'
 
-const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/single_read.php/?id=12";
+const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/read.php";
 
-function App() {
+function App() {  
 
   //const [PhotoPage, setPage] = useState(1)
 
   const [Photo, setUserData] = useState({});
 
-  //const [PhotoJSON, setUserData2] = useState({});  
+  const [PhotoArray, setUserData2] = useState({});  
 
   const resultsPerPage = 4
   //const totalResults = Photo.length
@@ -43,7 +43,6 @@ function App() {
     }, [PhotoPage])*/
 
   
-
   console.log(Photo);
 
   return (
