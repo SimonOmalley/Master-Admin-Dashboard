@@ -94,8 +94,8 @@ function Dashboard() {
         </InfoCard>
       </div>
 
-      <TableContainer>
-        <App />        
+      <TableContainer>      
+        <App />         
       </TableContainer>
 
       <PageTitle>Charts</PageTitle>

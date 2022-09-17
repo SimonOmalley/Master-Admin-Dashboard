@@ -11,39 +11,33 @@ import {
   TableFooter,
 } from '@windmill/react-ui'
 
-const apiUrl = "https://api.smartwaste.app/Controller/API/UnidentifiedPhotosAPI/read.php";
+const apiUrl = "https://api.smartwaste.app/Debugging/sampleread.json";
 
 function App() {  
 
-  //const [PhotoPage, setPage] = useState(1)
+  const [PhotoPage, setPage] = useState(1)
 
-  const [Photo, setUserData] = useState({});
+  const [Photo, setUserData] = useState([]);   
 
-  const [PhotoArray, setUserData2] = useState({});  
+  const resultsPerPage = 1
+  const totalResults = Photo.length
 
-  const resultsPerPage = 4
-  //const totalResults = Photo.length
-
-  /*function onPageChangeTable1(p) {
-    setPage(p)
-  } */ 
+  function onPageChangeTable1(p) {
+    setPage(p) 
+  }
 
   useEffect(() => {
-    getApiWithAxios();    
+    getApiWithAxios();  
   }, []);
 
   const getApiWithAxios = async () => {
     const response = await axios.get(apiUrl);
-    setUserData(response.data); 
-    //setUserData2(response.data);      
+    setUserData(response.data);             
   };
-
-  /*useEffect(() => {    
-      setPage(Photo.slice((PhotoPage - 1) * resultsPerPage, PhotoPage * resultsPerPage))
-    }, [PhotoPage])*/
-
   
-  console.log(Photo);
+
+    console.log(Photo);  
+  
 
   return (
     <Table>
@@ -58,7 +52,7 @@ function App() {
                </tr>
              </TableHeader>
              <TableBody> 
-              {[Photo].map((photo, i) => (           
+              {Photo.slice(0,4).map((photo, i) => (           
                  <TableRow key = {i}>
                    <TableCell>                  
                        <div>
@@ -83,7 +77,13 @@ function App() {
                  </TableRow>  
                  ))}          
              </TableBody>
-             <TableFooter>            
+             <TableFooter>  
+             <Pagination
+            totalResults={totalResults}
+            resultsPerPage={resultsPerPage}
+            onChange={onPageChangeTable1}
+            label="Table navigation"
+          />          
         </TableFooter>
            </Table>
               
