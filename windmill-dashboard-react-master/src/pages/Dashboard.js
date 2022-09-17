@@ -27,10 +27,15 @@ import {
   doughnutLegends,
   lineLegends,
 } from '../utils/demo/chartsData'
+import { render } from 'react-dom'
 
 function Dashboard() {
   const [page, setPage] = useState(1)
+<<<<<<< Updated upstream
   const [data, setData] = useState([])
+=======
+  const [data, setData] = useState([])    
+>>>>>>> Stashed changes
 
   // pagination setup
   const resultsPerPage = 10
@@ -40,7 +45,11 @@ function Dashboard() {
   function onPageChange(p) {
     setPage(p)
   }
+<<<<<<< Updated upstream
 
+=======
+  
+>>>>>>> Stashed changes
   // on page change, load new sliced data
   // here you would make another server request for new data
   useEffect(() => {
@@ -49,9 +58,7 @@ function Dashboard() {
 
   return (
     <>
-      <PageTitle>Dashboard</PageTitle>
-
-      
+      <PageTitle>Dashboard</PageTitle>      
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -80,9 +87,7 @@ function Dashboard() {
             bgColorClass="bg-green-100 dark:bg-green-500"
             className="mr-4"
           />
-        </InfoCard>
-
-        
+        </InfoCard>        
 
         <InfoCard title="Weeks until Uni ends forever" value="5">
           <RoundIcon
@@ -90,6 +95,7 @@ function Dashboard() {
             iconColorClass="text-teal-500 dark:text-teal-100"
             bgColorClass="bg-teal-100 dark:bg-teal-500"
             className="mr-4"
+<<<<<<< Updated upstream
           />
         </InfoCard>
       </div>
@@ -139,6 +145,14 @@ function Dashboard() {
             onChange={onPageChange}
           />
         </TableFooter>
+=======
+          />          
+        </InfoCard>
+      </div>
+      
+      <TableContainer>             
+        <App />                 
+>>>>>>> Stashed changes
       </TableContainer>
 
       <PageTitle>Charts</PageTitle>
